@@ -198,7 +198,6 @@ function LoginPage() {
                   email: "demo@cybertrace.ai",
                   password: "demo1234",
                   role: "Forensic Analyst",
-                  badge: "CT-DEMO-01",
                 });
               }
               await api.loadDemoData();
