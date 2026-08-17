@@ -182,9 +182,43 @@ function LoginPage() {
           {loading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
           Sign In
         </Button>
+        <Button
+          type="button"
+          variant="secondary"
+          className="w-full"
+          disabled={loading}
+          onClick={async () => {
+            setLoading(true);
+            try {
+              try {
+                await api.login("demo@cybertrace.ai", "demo1234");
+              } catch {
+                await api.register({
+                  name: "Demo Investigator",
+                  email: "demo@cybertrace.ai",
+                  password: "demo1234",
+                  role: "Forensic Analyst",
+                  badge: "CT-DEMO-01",
+                });
+              }
+              await api.loadDemoData();
+              toast.success("Demo workspace ready", {
+                description: "Synthetic investigation dataset loaded.",
+              });
+              navigate({ to: "/dashboard" });
+            } catch (err) {
+              toast.error(err instanceof Error ? err.message : "Demo mode failed");
+            } finally {
+              setLoading(false);
+            }
+          }}
+        >
+          Enter Demo Mode
+        </Button>
         <Button asChild variant="outline" className="w-full">
           <Link to="/register">Create Account</Link>
         </Button>
+
         <p className="pt-2 text-center text-[11px] text-muted-foreground">
           Access is logged. All actions are recorded in the audit trail.
         </p>
