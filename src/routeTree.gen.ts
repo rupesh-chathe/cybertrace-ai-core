@@ -10,33 +10,280 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as RegisterRouteImport } from './routes/register'
+import { Route as AuthenticatedAiAnalysisRouteImport } from './routes/_authenticated/ai-analysis'
+import { Route as AuthenticatedAuditLogsRouteImport } from './routes/_authenticated/audit-logs'
+import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
+import { Route as AuthenticatedReportsRouteImport } from './routes/_authenticated/reports'
+import { Route as AuthenticatedSettingsRouteImport } from './routes/_authenticated/settings'
+import { Route as AuthenticatedTimelineRouteImport } from './routes/_authenticated/timeline'
+import { Route as AuthenticatedCasesIndexRouteImport } from './routes/_authenticated/cases.index'
+import { Route as AuthenticatedCasesIdRouteImport } from './routes/_authenticated/cases.$id'
+import { Route as AuthenticatedCasesNewRouteImport } from './routes/_authenticated/cases.new'
+import { Route as AuthenticatedEvidenceIndexRouteImport } from './routes/_authenticated/evidence.index'
+import { Route as AuthenticatedEvidenceIdRouteImport } from './routes/_authenticated/evidence.$id'
+import { Route as AuthenticatedCasesIdIndexRouteImport } from './routes/_authenticated/cases.$id.index'
+import { Route as AuthenticatedCasesIdAnalysisRouteImport } from './routes/_authenticated/cases.$id.analysis'
+import { Route as AuthenticatedCasesIdEvidenceRouteImport } from './routes/_authenticated/cases.$id.evidence'
+import { Route as AuthenticatedCasesIdNotesRouteImport } from './routes/_authenticated/cases.$id.notes'
+import { Route as AuthenticatedCasesIdReportRouteImport } from './routes/_authenticated/cases.$id.report'
+import { Route as AuthenticatedCasesIdTimelineRouteImport } from './routes/_authenticated/cases.$id.timeline'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RegisterRoute = RegisterRouteImport.update({
+  id: '/register',
+  path: '/register',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedAiAnalysisRoute = AuthenticatedAiAnalysisRouteImport.update({
+  id: '/ai-analysis',
+  path: '/ai-analysis',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedAuditLogsRoute = AuthenticatedAuditLogsRouteImport.update({
+  id: '/audit-logs',
+  path: '/audit-logs',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedDashboardRoute = AuthenticatedDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedReportsRoute = AuthenticatedReportsRouteImport.update({
+  id: '/reports',
+  path: '/reports',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedSettingsRoute = AuthenticatedSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedTimelineRoute = AuthenticatedTimelineRouteImport.update({
+  id: '/timeline',
+  path: '/timeline',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedCasesIndexRoute = AuthenticatedCasesIndexRouteImport.update({
+  id: '/cases/',
+  path: '/cases/',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedCasesIdRoute = AuthenticatedCasesIdRouteImport.update({
+  id: '/cases/$id',
+  path: '/cases/$id',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedCasesNewRoute = AuthenticatedCasesNewRouteImport.update({
+  id: '/cases/new',
+  path: '/cases/new',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedEvidenceIndexRoute =
+  AuthenticatedEvidenceIndexRouteImport.update({
+    id: '/evidence/',
+    path: '/evidence/',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedEvidenceIdRoute = AuthenticatedEvidenceIdRouteImport.update({
+  id: '/evidence/$id',
+  path: '/evidence/$id',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedCasesIdIndexRoute =
+  AuthenticatedCasesIdIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => AuthenticatedCasesIdRoute,
+  } as any)
+const AuthenticatedCasesIdAnalysisRoute =
+  AuthenticatedCasesIdAnalysisRouteImport.update({
+    id: '/analysis',
+    path: '/analysis',
+    getParentRoute: () => AuthenticatedCasesIdRoute,
+  } as any)
+const AuthenticatedCasesIdEvidenceRoute =
+  AuthenticatedCasesIdEvidenceRouteImport.update({
+    id: '/evidence',
+    path: '/evidence',
+    getParentRoute: () => AuthenticatedCasesIdRoute,
+  } as any)
+const AuthenticatedCasesIdNotesRoute =
+  AuthenticatedCasesIdNotesRouteImport.update({
+    id: '/notes',
+    path: '/notes',
+    getParentRoute: () => AuthenticatedCasesIdRoute,
+  } as any)
+const AuthenticatedCasesIdReportRoute =
+  AuthenticatedCasesIdReportRouteImport.update({
+    id: '/report',
+    path: '/report',
+    getParentRoute: () => AuthenticatedCasesIdRoute,
+  } as any)
+const AuthenticatedCasesIdTimelineRoute =
+  AuthenticatedCasesIdTimelineRouteImport.update({
+    id: '/timeline',
+    path: '/timeline',
+    getParentRoute: () => AuthenticatedCasesIdRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/login': typeof LoginRoute
+  '/register': typeof RegisterRoute
+  '/ai-analysis': typeof AuthenticatedAiAnalysisRoute
+  '/audit-logs': typeof AuthenticatedAuditLogsRoute
+  '/dashboard': typeof AuthenticatedDashboardRoute
+  '/reports': typeof AuthenticatedReportsRoute
+  '/settings': typeof AuthenticatedSettingsRoute
+  '/timeline': typeof AuthenticatedTimelineRoute
+  '/cases/$id': typeof AuthenticatedCasesIdRouteWithChildren
+  '/cases/new': typeof AuthenticatedCasesNewRoute
+  '/evidence/$id': typeof AuthenticatedEvidenceIdRoute
+  '/cases/': typeof AuthenticatedCasesIndexRoute
+  '/evidence/': typeof AuthenticatedEvidenceIndexRoute
+  '/cases/$id/analysis': typeof AuthenticatedCasesIdAnalysisRoute
+  '/cases/$id/evidence': typeof AuthenticatedCasesIdEvidenceRoute
+  '/cases/$id/notes': typeof AuthenticatedCasesIdNotesRoute
+  '/cases/$id/report': typeof AuthenticatedCasesIdReportRoute
+  '/cases/$id/timeline': typeof AuthenticatedCasesIdTimelineRoute
+  '/cases/$id/': typeof AuthenticatedCasesIdIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/login': typeof LoginRoute
+  '/register': typeof RegisterRoute
+  '/ai-analysis': typeof AuthenticatedAiAnalysisRoute
+  '/audit-logs': typeof AuthenticatedAuditLogsRoute
+  '/dashboard': typeof AuthenticatedDashboardRoute
+  '/reports': typeof AuthenticatedReportsRoute
+  '/settings': typeof AuthenticatedSettingsRoute
+  '/timeline': typeof AuthenticatedTimelineRoute
+  '/cases/new': typeof AuthenticatedCasesNewRoute
+  '/evidence/$id': typeof AuthenticatedEvidenceIdRoute
+  '/cases': typeof AuthenticatedCasesIndexRoute
+  '/evidence': typeof AuthenticatedEvidenceIndexRoute
+  '/cases/$id/analysis': typeof AuthenticatedCasesIdAnalysisRoute
+  '/cases/$id/evidence': typeof AuthenticatedCasesIdEvidenceRoute
+  '/cases/$id/notes': typeof AuthenticatedCasesIdNotesRoute
+  '/cases/$id/report': typeof AuthenticatedCasesIdReportRoute
+  '/cases/$id/timeline': typeof AuthenticatedCasesIdTimelineRoute
+  '/cases/$id': typeof AuthenticatedCasesIdIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
+  '/login': typeof LoginRoute
+  '/register': typeof RegisterRoute
+  '/_authenticated/ai-analysis': typeof AuthenticatedAiAnalysisRoute
+  '/_authenticated/audit-logs': typeof AuthenticatedAuditLogsRoute
+  '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
+  '/_authenticated/reports': typeof AuthenticatedReportsRoute
+  '/_authenticated/settings': typeof AuthenticatedSettingsRoute
+  '/_authenticated/timeline': typeof AuthenticatedTimelineRoute
+  '/_authenticated/cases/$id': typeof AuthenticatedCasesIdRouteWithChildren
+  '/_authenticated/cases/new': typeof AuthenticatedCasesNewRoute
+  '/_authenticated/evidence/$id': typeof AuthenticatedEvidenceIdRoute
+  '/_authenticated/cases/': typeof AuthenticatedCasesIndexRoute
+  '/_authenticated/evidence/': typeof AuthenticatedEvidenceIndexRoute
+  '/_authenticated/cases/$id/analysis': typeof AuthenticatedCasesIdAnalysisRoute
+  '/_authenticated/cases/$id/evidence': typeof AuthenticatedCasesIdEvidenceRoute
+  '/_authenticated/cases/$id/notes': typeof AuthenticatedCasesIdNotesRoute
+  '/_authenticated/cases/$id/report': typeof AuthenticatedCasesIdReportRoute
+  '/_authenticated/cases/$id/timeline': typeof AuthenticatedCasesIdTimelineRoute
+  '/_authenticated/cases/$id/': typeof AuthenticatedCasesIdIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/login'
+    | '/register'
+    | '/ai-analysis'
+    | '/audit-logs'
+    | '/dashboard'
+    | '/reports'
+    | '/settings'
+    | '/timeline'
+    | '/cases/$id'
+    | '/cases/new'
+    | '/evidence/$id'
+    | '/cases/'
+    | '/evidence/'
+    | '/cases/$id/analysis'
+    | '/cases/$id/evidence'
+    | '/cases/$id/notes'
+    | '/cases/$id/report'
+    | '/cases/$id/timeline'
+    | '/cases/$id/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/login'
+    | '/register'
+    | '/ai-analysis'
+    | '/audit-logs'
+    | '/dashboard'
+    | '/reports'
+    | '/settings'
+    | '/timeline'
+    | '/cases/new'
+    | '/evidence/$id'
+    | '/cases'
+    | '/evidence'
+    | '/cases/$id/analysis'
+    | '/cases/$id/evidence'
+    | '/cases/$id/notes'
+    | '/cases/$id/report'
+    | '/cases/$id/timeline'
+    | '/cases/$id'
+  id:
+    | '__root__'
+    | '/'
+    | '/_authenticated'
+    | '/login'
+    | '/register'
+    | '/_authenticated/ai-analysis'
+    | '/_authenticated/audit-logs'
+    | '/_authenticated/dashboard'
+    | '/_authenticated/reports'
+    | '/_authenticated/settings'
+    | '/_authenticated/timeline'
+    | '/_authenticated/cases/$id'
+    | '/_authenticated/cases/new'
+    | '/_authenticated/evidence/$id'
+    | '/_authenticated/cases/'
+    | '/_authenticated/evidence/'
+    | '/_authenticated/cases/$id/analysis'
+    | '/_authenticated/cases/$id/evidence'
+    | '/_authenticated/cases/$id/notes'
+    | '/_authenticated/cases/$id/report'
+    | '/_authenticated/cases/$id/timeline'
+    | '/_authenticated/cases/$id/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
+  LoginRoute: typeof LoginRoute
+  RegisterRoute: typeof RegisterRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +295,206 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/register': {
+      id: '/register'
+      path: '/register'
+      fullPath: '/register'
+      preLoaderRoute: typeof RegisterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated/ai-analysis': {
+      id: '/_authenticated/ai-analysis'
+      path: '/ai-analysis'
+      fullPath: '/ai-analysis'
+      preLoaderRoute: typeof AuthenticatedAiAnalysisRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/audit-logs': {
+      id: '/_authenticated/audit-logs'
+      path: '/audit-logs'
+      fullPath: '/audit-logs'
+      preLoaderRoute: typeof AuthenticatedAuditLogsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/dashboard': {
+      id: '/_authenticated/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof AuthenticatedDashboardRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/reports': {
+      id: '/_authenticated/reports'
+      path: '/reports'
+      fullPath: '/reports'
+      preLoaderRoute: typeof AuthenticatedReportsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/settings': {
+      id: '/_authenticated/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof AuthenticatedSettingsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/timeline': {
+      id: '/_authenticated/timeline'
+      path: '/timeline'
+      fullPath: '/timeline'
+      preLoaderRoute: typeof AuthenticatedTimelineRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/cases/': {
+      id: '/_authenticated/cases/'
+      path: '/cases'
+      fullPath: '/cases/'
+      preLoaderRoute: typeof AuthenticatedCasesIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/cases/$id': {
+      id: '/_authenticated/cases/$id'
+      path: '/cases/$id'
+      fullPath: '/cases/$id'
+      preLoaderRoute: typeof AuthenticatedCasesIdRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/cases/new': {
+      id: '/_authenticated/cases/new'
+      path: '/cases/new'
+      fullPath: '/cases/new'
+      preLoaderRoute: typeof AuthenticatedCasesNewRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/evidence/': {
+      id: '/_authenticated/evidence/'
+      path: '/evidence'
+      fullPath: '/evidence/'
+      preLoaderRoute: typeof AuthenticatedEvidenceIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/evidence/$id': {
+      id: '/_authenticated/evidence/$id'
+      path: '/evidence/$id'
+      fullPath: '/evidence/$id'
+      preLoaderRoute: typeof AuthenticatedEvidenceIdRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/cases/$id/': {
+      id: '/_authenticated/cases/$id/'
+      path: '/'
+      fullPath: '/cases/$id/'
+      preLoaderRoute: typeof AuthenticatedCasesIdIndexRouteImport
+      parentRoute: typeof AuthenticatedCasesIdRoute
+    }
+    '/_authenticated/cases/$id/analysis': {
+      id: '/_authenticated/cases/$id/analysis'
+      path: '/analysis'
+      fullPath: '/cases/$id/analysis'
+      preLoaderRoute: typeof AuthenticatedCasesIdAnalysisRouteImport
+      parentRoute: typeof AuthenticatedCasesIdRoute
+    }
+    '/_authenticated/cases/$id/evidence': {
+      id: '/_authenticated/cases/$id/evidence'
+      path: '/evidence'
+      fullPath: '/cases/$id/evidence'
+      preLoaderRoute: typeof AuthenticatedCasesIdEvidenceRouteImport
+      parentRoute: typeof AuthenticatedCasesIdRoute
+    }
+    '/_authenticated/cases/$id/notes': {
+      id: '/_authenticated/cases/$id/notes'
+      path: '/notes'
+      fullPath: '/cases/$id/notes'
+      preLoaderRoute: typeof AuthenticatedCasesIdNotesRouteImport
+      parentRoute: typeof AuthenticatedCasesIdRoute
+    }
+    '/_authenticated/cases/$id/report': {
+      id: '/_authenticated/cases/$id/report'
+      path: '/report'
+      fullPath: '/cases/$id/report'
+      preLoaderRoute: typeof AuthenticatedCasesIdReportRouteImport
+      parentRoute: typeof AuthenticatedCasesIdRoute
+    }
+    '/_authenticated/cases/$id/timeline': {
+      id: '/_authenticated/cases/$id/timeline'
+      path: '/timeline'
+      fullPath: '/cases/$id/timeline'
+      preLoaderRoute: typeof AuthenticatedCasesIdTimelineRouteImport
+      parentRoute: typeof AuthenticatedCasesIdRoute
+    }
   }
 }
 
+interface AuthenticatedCasesIdRouteChildren {
+  AuthenticatedCasesIdAnalysisRoute: typeof AuthenticatedCasesIdAnalysisRoute
+  AuthenticatedCasesIdEvidenceRoute: typeof AuthenticatedCasesIdEvidenceRoute
+  AuthenticatedCasesIdNotesRoute: typeof AuthenticatedCasesIdNotesRoute
+  AuthenticatedCasesIdReportRoute: typeof AuthenticatedCasesIdReportRoute
+  AuthenticatedCasesIdTimelineRoute: typeof AuthenticatedCasesIdTimelineRoute
+  AuthenticatedCasesIdIndexRoute: typeof AuthenticatedCasesIdIndexRoute
+}
+
+const AuthenticatedCasesIdRouteChildren: AuthenticatedCasesIdRouteChildren = {
+  AuthenticatedCasesIdAnalysisRoute: AuthenticatedCasesIdAnalysisRoute,
+  AuthenticatedCasesIdEvidenceRoute: AuthenticatedCasesIdEvidenceRoute,
+  AuthenticatedCasesIdNotesRoute: AuthenticatedCasesIdNotesRoute,
+  AuthenticatedCasesIdReportRoute: AuthenticatedCasesIdReportRoute,
+  AuthenticatedCasesIdTimelineRoute: AuthenticatedCasesIdTimelineRoute,
+  AuthenticatedCasesIdIndexRoute: AuthenticatedCasesIdIndexRoute,
+}
+
+const AuthenticatedCasesIdRouteWithChildren =
+  AuthenticatedCasesIdRoute._addFileChildren(AuthenticatedCasesIdRouteChildren)
+
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedAiAnalysisRoute: typeof AuthenticatedAiAnalysisRoute
+  AuthenticatedAuditLogsRoute: typeof AuthenticatedAuditLogsRoute
+  AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRoute
+  AuthenticatedReportsRoute: typeof AuthenticatedReportsRoute
+  AuthenticatedSettingsRoute: typeof AuthenticatedSettingsRoute
+  AuthenticatedTimelineRoute: typeof AuthenticatedTimelineRoute
+  AuthenticatedCasesIdRoute: typeof AuthenticatedCasesIdRouteWithChildren
+  AuthenticatedCasesNewRoute: typeof AuthenticatedCasesNewRoute
+  AuthenticatedEvidenceIdRoute: typeof AuthenticatedEvidenceIdRoute
+  AuthenticatedCasesIndexRoute: typeof AuthenticatedCasesIndexRoute
+  AuthenticatedEvidenceIndexRoute: typeof AuthenticatedEvidenceIndexRoute
+}
+
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedAiAnalysisRoute: AuthenticatedAiAnalysisRoute,
+  AuthenticatedAuditLogsRoute: AuthenticatedAuditLogsRoute,
+  AuthenticatedDashboardRoute: AuthenticatedDashboardRoute,
+  AuthenticatedReportsRoute: AuthenticatedReportsRoute,
+  AuthenticatedSettingsRoute: AuthenticatedSettingsRoute,
+  AuthenticatedTimelineRoute: AuthenticatedTimelineRoute,
+  AuthenticatedCasesIdRoute: AuthenticatedCasesIdRouteWithChildren,
+  AuthenticatedCasesNewRoute: AuthenticatedCasesNewRoute,
+  AuthenticatedEvidenceIdRoute: AuthenticatedEvidenceIdRoute,
+  AuthenticatedCasesIndexRoute: AuthenticatedCasesIndexRoute,
+  AuthenticatedEvidenceIndexRoute: AuthenticatedEvidenceIndexRoute,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
+  LoginRoute: LoginRoute,
+  RegisterRoute: RegisterRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
